@@ -1,5 +1,6 @@
 package org.example.introtospringboot;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -27,6 +28,26 @@ public class TodoController {
         todos.add(newTodo);
         return newTodo;
 
+    }
+
+    @GetMapping("/todos/{id}")
+    public ResponseEntity<?> getTodo(@PathVariable int id){
+        for(Todo todo : todos){
+            if(todo.getId() == id){
+                return ResponseEntity.ok(todo);
+            }
+        }
+        return ResponseEntity.status(404).body("Not Found");
+    }
+
+    @GetMapping("/todos/")
+    public ResponseEntity<?> getTodos(@RequestParam Boolean isCompleted){
+        for (Todo todo : todos){
+            if(todo.isCompleted() == isCompleted){
+                return ResponseEntity.ok(todo);
+            }
+        }
+        return ResponseEntity.status(404).body("Not Found");
     }
 
     @PatchMapping("/todo/{id}")
