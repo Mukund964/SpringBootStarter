@@ -1,10 +1,11 @@
 package org.example.introtospringboot;
 
 import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
-@Primary
+@Component("anotherTodo")
 public class AnotherTodo implements TodoService{
     @Override
     public String doSomething() {

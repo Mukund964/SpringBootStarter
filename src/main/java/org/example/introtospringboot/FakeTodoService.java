@@ -1,8 +1,10 @@
 package org.example.introtospringboot;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
+@Component("FakeToDo")
 public class FakeTodoService implements TodoService {
     @Override
     public String doSomething() {
