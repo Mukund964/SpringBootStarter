@@ -23,6 +23,8 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.aspectj:aspectjrt:1.9.22' // Runtime
+    implementation 'org.aspectj:aspectjweaver:1.9.22' // Compiler/Weaver
 }
 
 tasks.named('test') {
