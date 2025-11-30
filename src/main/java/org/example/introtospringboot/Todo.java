@@ -8,9 +8,8 @@ public class Todo {
 	private String title;
 	private int userId;
 
-    Todo(){
 
-    }
+
     Todo(int id, boolean completed, String title, int userId) {
         this.id = id;
         this.completed = completed;

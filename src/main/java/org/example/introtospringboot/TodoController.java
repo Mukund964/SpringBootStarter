@@ -1,7 +1,9 @@
 package org.example.introtospringboot;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tools.jackson.databind.annotation.JsonAppend;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +13,14 @@ import java.util.List;
 public class TodoController {
     private static List<Todo> todos;
 
-    public TodoController(){
+
+    private TodoService todoService;
+
+    public TodoController(TodoService todoService) {
+        this.todoService = todoService;
         todos = new ArrayList<>();
         todos.add(new Todo(1,false,"Todo 1",1));
         todos.add(new Todo(2,true,"Todo 2",2));
-
     }
 
 
@@ -38,7 +43,7 @@ public class TodoController {
                 return ResponseEntity.ok(todo);
             }
         }
-        return ResponseEntity.status(404).body("Not Found");
+        return ResponseEntity.status(404).body("Not Found" + this.todoService.doSomething());
     }
 
     @GetMapping("/todos/")
