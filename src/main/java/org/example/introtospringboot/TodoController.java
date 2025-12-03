@@ -16,7 +16,7 @@ import java.util.Map;
 @RequestMapping("/api/v1")
 public class TodoController {
     private static List<Todo> todos;
-
+    private TodoRepository todoRepository;
 
     private TodoService todoService1;
     private TodoService todoService2;
@@ -41,7 +41,7 @@ public class TodoController {
         response.put("status",true);
         response.put("message","Calling CreateTodo method" + this.todoService2.doSomething());
         response.put("data",newTodo);
-        todos.add(newTodo);
+        this.todoRepository.save(newTodo);
         return ResponseEntity.status(200).body(response);
 
     }

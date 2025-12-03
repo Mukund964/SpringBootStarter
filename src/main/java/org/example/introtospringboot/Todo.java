@@ -1,15 +1,26 @@
 package org.example.introtospringboot;
 
-import java.util.ArrayList;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.ArrayList;
+@Entity
+@Getter
+@Setter
 public class Todo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private boolean completed;
 	private String title;
 	private int userId;
 
 
-    Todo(){};
+    public Todo(){};
 
     Todo(int id, boolean completed, String title, int userId) {
         this.id = id;
@@ -19,7 +30,9 @@ public class Todo {
 
     }
 
-	public void setId(int id){
+
+
+    public void setId(int id){
 		this.id = id;
 	}
 
